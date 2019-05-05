@@ -9,6 +9,6 @@ Run flush.sh (it will flush IP Table rules after every 10mins)
 
 loop.sh will detect script in access.log and forward the IP. (basic detection)
 
-python file will actually detect the xss using ML. (advance detection)
+python file in XSS analysis will actually detect the xss using ML. (advance detection)
 
 run backup.sh to keep the backup.
