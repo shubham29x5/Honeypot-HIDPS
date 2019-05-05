@@ -1,0 +1,18 @@
+Processing 16 IPs...
+157.240.16.20, California, United States, 37.459, -122.1781
+172.20.10.2, , , 0, 0
+172.20.10.2, , , 0, 0
+157.240.16.39, California, United States, 37.459, -122.1781
+172.20.10.2, , , 0, 0
+172.20.10.1, , , 0, 0
+172.20.10.2, , , 0, 0
+104.244.42.1, California, United States, 37.7758, -122.4128
+172.20.10.2, , , 0, 0
+157.240.16.35, California, United States, 37.459, -122.1781
+1.38.9.209, Maharashtra, India, 18.975, 72.8258
+172.20.10.2, , , 0, 0
+172.20.10.2, , , 0, 0
+172.20.10.2, , , 0, 0
+144.2.193.65, California, United States, 37.386, -122.0838
+117.18.237.29, Taipei City, Taiwan, 25.0478, 121.5318
+Generating map and saving it to ./map.jpg

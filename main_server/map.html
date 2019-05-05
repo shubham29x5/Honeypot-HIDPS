@@ -1,0 +1,24 @@
+<html>
+<body background="./back.jpg">
+<h1> Current-Connections </h1>
+<script>
+var reimg
+window.onload=function () {
+  reimg=document.getElementById('re')
+  setInterval(function () {
+    reimg.src=reimg.src.replace(/\?.*/,function () {
+      return '?'+new Date()
+    })
+  },10)
+}
+</script>
+<img src="./map.jpg?" id="re" align="left"></img><br> <p style="font-size:2em;"> All the external network entries are marked with the red dot on the map
+</p>
+<form style="clear: both;"/>
+<input type="button" value="Show Data" onclick="location.href='./location_csv.html';" />
+</form>
+
+</body>
+</html>
+
+

@@ -1,0 +1,19 @@
+<html>
+<body background="./back.jpg">
+<h1> Connected IPs </h1>
+<script>
+var reimg
+window.onload=function () {
+  reimg=document.getElementById('re')
+  setInterval(function () {
+    reimg.src=reimg.src.replace(/\?.*/,function () {
+      return '?'+new Date()
+    })
+  },10)
+}
+</script>
+<img src="./connections.png?" id="re" align="left"></img><br><p style="font-size:2em;"> This is about the IP address from which all the connections originate.</p>
+</body>
+</html>
+
+

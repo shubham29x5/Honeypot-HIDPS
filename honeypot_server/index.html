@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+}
+figcaption{
+font-size: 2em;
+}
+
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+#content {
+    position: relative;
+}
+#logo1 {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+	height:100px;
+	width:100px;
+}
+#logo2{
+position: absolute;
+    top: 0px;
+    right: 110px;
+	height:100px;
+	width:100px;
+}
+
+</style>
+</head>
+<body background="./back.jpg">
+
+<div id="content">
+    <img src="logo.png" id="logo1"class="logo"/>
+	<img src="logo2.png" id="logo2" class="logo2"/>
+    
+</div>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="./sample.html">IP Vs Duration Curve</a>
+  <a href="./device.html">Current Devices Plot</a>
+  <a href="./map.html">IPs on MAP</a>
+  <a href="./band.html">In/Out/Bandwith Curve</a>
+</div>
+
+<div id="main">
+  <h2>Welcome to the Honeypot Panel</h2>
+
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open</span>
+<p style="font-size:2em;">The following tool is made to Analyze the Network. </p> <br>
+<p style="font-size:1.5em;">It consists of 4 modules which plots live data and even generate dataset </p> <br>
+<p style="font-size:1.3em;">IP vs Duration Plot :- It simply generates IP and duration for each of them on network according to consumption of data </p> <br>
+<p style="font-size:1.3em;">Current Devices  :- This module plots all the paths taken by devices on the network and all the sub paths also </p> <br>
+<p style="font-size:1.3em;">IPs on Map :- This module maps out all the external network on the webpage resolve them to location and puts them on a map </p> <br>
+<p style="font-size:1.3em;">In-Out Bandwidth Curve:- This generated a plot with Input,Output,Total bandwidth consumption versus the Time taken by them. Red being IN,Blue being Total,Green being out </p>
+<div class="row">
+  <div class="column">
+</div>
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.body.style.backgroundColor = "white";
+}
+</script>
+</body>
+</html>

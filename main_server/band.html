@@ -1,0 +1,25 @@
+<html>
+<body background="./back.jpg">
+<h1> Bandwidth </h1>
+<script>
+var reimg
+window.onload=function () {
+  reimg=document.getElementById('re')
+  setInterval(function () {
+    reimg.src=reimg.src.replace(/\?.*/,function () {
+      return '?'+new Date()
+    })
+  },10)
+}
+</script>
+<img src="./band.png?" id="re" align="left"></img><br><p style="font-size:2em;"> This plot shows frames per second consumption <br>
+Blue :- Being Total <br>
+Red :- Being input frames <br>
+Green :- Being output frames </p>
+<form style="clear: both;"/>
+<input type="button" value="Show Data" onclick="location.href='./banddata.html';" />
+</form>
+</body>
+</html>
+
+

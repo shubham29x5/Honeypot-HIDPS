@@ -1,0 +1,23 @@
+<html>
+<head>
+<body background="./back.jpg">
+<h1> The IP vs Duration Graph </h1>
+<script>
+var reimg
+window.onload=function () {
+  reimg=document.getElementById('re')
+  setInterval(function () {
+    reimg.src=reimg.src.replace(/\?.*/,function () {
+      return '?'+new Date()
+    })
+  },10)
+}
+</script>
+<img src="./ipvsdur.png?" id="re" align="left"></img><br>Hello world!
+<form style="clear: both;"/>
+<input type="button" value="Show Data" onclick="location.href='./livedata.html';" />
+</form>
+</body>
+</html>
+
+

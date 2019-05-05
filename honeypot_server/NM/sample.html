@@ -1,0 +1,24 @@
+<html>
+<head>
+<body background="./back.jpg">
+<h1> The IP vs Duration Graph </h1>
+<script>
+var reimg
+window.onload=function () {
+  reimg=document.getElementById('re')
+  setInterval(function () {
+    reimg.src=reimg.src.replace(/\?.*/,function () {
+      return '?'+new Date()
+    })
+  },10)
+}
+</script>
+<img src="./ipvsdur.png?" id="re" align="left"></img><br><p style="font-size:2em;"> This plot is about all the IP addresses cover and their time on the network in seconds (as total consumption), Click on SHOW DATA to see all the entries made 
+</p>
+<form style="clear: both;"/>
+<input type="button" value="Show Data" onclick="location.href='./livedata.html';" />
+</form>
+</body>
+</html>
+
+
