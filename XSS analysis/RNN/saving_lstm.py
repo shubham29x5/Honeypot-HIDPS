@@ -30,7 +30,11 @@ def precision(y_true, y_pred):
 
 def generate_token_sent(s):
     # Convert to lowercases
-    s = s.lower()
+    if type(s) == str:
+    	s = s.lower()
+    else:
+        s = str(s)
+        s = s.lower()
     
     # Replace all none alphanumeric characters with spaces
     s = re.sub(r'[^a-zA-Z0-9\s]', ' ', s)
@@ -60,60 +64,10 @@ def generate_token_sent_col(arr):
     return new_arr
 
 #Training data
-with open('normalTrafficTraining.txt') as f:
-    ctnt = f.readlines()
-    
-ctnt = [x.strip() for x in ctnt]
-ctnt = np.array(ctnt)
+df = pd.read_csv('data.csv',delimiter=',',encoding='latin-1')
 
-payload = []
-for each in ctnt:
-    try:
-        if ord(each[0][0])>=99 and ord(each[0][0])<=124 :
-            payload.append(each)
-    except:
-        pass
-
-pyld1 = np.array(payload)
-
-with open('normalTrafficTest.txt') as f:
-    ctnt = f.readlines()
-    
-ctnt = [x.strip() for x in ctnt]
-ctnt = np.array(ctnt)
-
-payload = []
-for each in ctnt:
-    try:
-        if ord(each[0][0])>=99 and ord(each[0][0])<=124 :
-            payload.append(each)
-    except:
-        pass
-
-pyld2 = np.array(payload)
-
-payload = np.concatenate((pyld1,pyld2))
-
-df = pd.read_csv('payload_train.csv',delimiter=',',encoding='latin-1')
-pyld = df.payload
-atype = df.attack_type
-data = np.column_stack((pyld,atype))
-normx = data[data[:,1]=='norm']
-normpyld = normx[:,0]
-
-payload = np.concatenate((payload,normpyld))
-
-norm = np.full(payload.size, 'norm')
-norm = np.column_stack((payload,norm))
-
-
-df = pd.read_csv('xssed_payload.csv',delimiter=',',encoding='latin-1')
-xss = np.full(df.values.size, 'xss')
-xss_a = np.reshape(df.values, (df.values.size,))
-
-xss_attck = np.column_stack((xss_a,xss))
-
-train_data = np.concatenate((xss_attck,norm))
+train_data = np.column_stack((df.payload,df.type))
+#print(train_data[:5, :])
 
 X = train_data[:,0]
 X = generate_token_sent_col(X)
@@ -123,37 +77,8 @@ le = LabelEncoder()
 Y = le.fit_transform(Y)
 Y = Y.reshape(-1,1)
 
-
-#Test data
-with open('xss_vectors.txt') as f:
-    content = f.readlines()
-    
-content = [x.strip() for x in content]
-content = np.array(content)
-
-xss = np.full(content.shape, 'xss')
-
-xs = np.column_stack((content,xss))
-
-dft = pd.read_csv('payload_test.csv',delimiter=',',encoding='latin-1')
-payload_t = dft.payload
-atype_t = dft.attack_type
-data_t = np.column_stack((payload_t,atype_t))
-normx_t = data_t[data_t[:,1]=='norm']
-xssx_t = data_t[data_t[:,1]=='xss']
-x_t = np.concatenate((normx_t, xssx_t), axis=0)
-test_data = np.concatenate((x_t, xs), axis=0)
-
-X_t = test_data[:,0]
-X_t = generate_token_sent_col(X_t)
-Y_t = test_data[:,1]
-
-le = LabelEncoder()
-Y_t = le.fit_transform(Y_t)
-Y_t = Y_t.reshape(-1,1)
-
-ol = np.concatenate((train_data,test_data))
-#print('ol',ol.shape)
+ol = train_data
+print('ol',ol.shape)
 nX, nXt, nY, nYt = train_test_split(ol[:,0], ol[:,1], test_size=0.33, random_state=42)
 
 nX = generate_token_sent_col(nX)
